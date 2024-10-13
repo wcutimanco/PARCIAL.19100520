@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using PARCIAL._19100520.DOMAIN.Core.Entities;
 
 namespace PARCIAL._19100520.DOMAIN.Infrastructure.Data;
 
@@ -16,6 +15,8 @@ public partial class Parcial202402CodigoDbContext : DbContext
     {
     }
 
+    public virtual DbSet<AutoParts> AutoParts { get; set; }
+
     public virtual DbSet<Mechanic> Mechanic { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -24,6 +25,15 @@ public partial class Parcial202402CodigoDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<AutoParts>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__AutoPart__3214EC07FE6293F4");
+
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.PartName).HasMaxLength(100);
+            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+        });
+
         modelBuilder.Entity<Mechanic>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Mechanic__3214EC07E7C24A06");

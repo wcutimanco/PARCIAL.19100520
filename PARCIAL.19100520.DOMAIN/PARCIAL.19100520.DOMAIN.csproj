@@ -11,9 +11,7 @@
     <Folder Include="Core\DTO\" />
     <Folder Include="Core\Settings\" />
     <Folder Include="Core\Services\" />
-    <Folder Include="Core\Interfaces\" />
     <Folder Include="Infrastructure\Data\" />
-    <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Infrastructure\Shared\" />
   </ItemGroup>
 
